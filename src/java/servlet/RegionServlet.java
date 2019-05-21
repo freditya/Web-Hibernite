@@ -75,8 +75,12 @@ public class RegionServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
-        processRequest(request, response);
+        String id = request.getParameter("region_Id");
+        String name = request.getParameter("region_Name");
+        if (rdao.saveOrDelete(new Region(new BigDecimal(id), name), true)) {
+            processRequest(request, response);
+        }
+//        processRequest(request, response);
     }
 
     /**
