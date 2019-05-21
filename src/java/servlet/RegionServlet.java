@@ -75,10 +75,8 @@ public class RegionServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String name = request.getParameter("region_name");
-        if (rdao.saveOrDelete(new Region(new BigDecimal(0), name), true)) {
-            processRequest(request, response);
-        }
+
+        processRequest(request, response);
     }
 
     /**
@@ -92,7 +90,22 @@ public class RegionServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        String name = null;
+        name = request.getParameter("region_name");
+        if (name.isEmpty()) {
+            request.getSession().setAttribute("alert", "Region Name tidak boleh kosong");
+        } else {
+            if (rdao.saveOrDelete(new Region(new BigDecimal(0), name), true)) {
+                processRequest(request, response);
+            }
+        }
+        
+//        String id = null;
+//        id = request.getParameter("region_id");
+//        
+//        if(rdao.saveOrDelete(new Region(new BigDecimal(id) ), false)){
+//            processRequest(request, response);
+//        }
     }
 
     /**
