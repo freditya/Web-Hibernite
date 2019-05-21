@@ -34,7 +34,7 @@
                             Dropdown
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="/MVC-Web/Region.jsp">Region</a>
+                            <a class="dropdown-item" href="RegionServlet">Region</a>
                             <a class="dropdown-item" href="#">Country</a>
                             <a class="dropdown-item" href="#">Employee</a>
                             <a class="dropdown-item" href="#">Location</a>
